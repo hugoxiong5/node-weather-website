@@ -11,7 +11,11 @@ const forecast = (longitude, latitude, callback) => {
     } else {
       const data = body.current;
       const {weather_descriptions:description, temperature, feelslike} = data;
-      const message = `${description[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out.`;
+      const timeofday = 'day';
+      if (data.is_day === 'no') {
+        timeofday = 'night'
+      }
+      const message = `${description[0]}. It's ${timeofday}, and it's currently ${temperature} degrees out. It feels like ${feelslike} degrees out.`;
       callback(undefined, message);
     };
   });
