@@ -11,7 +11,7 @@ const forecast = (longitude, latitude, callback) => {
     } else {
       const data = body.current;
       const {weather_descriptions:description, temperature, feelslike} = data;
-      const timeofday = 'day';
+      let timeofday = 'day';
       if (data.is_day === 'no') {
         timeofday = 'night'
       }
